@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
 
 <!DOCTYPE html>
+
+
 <html>
 
-    
+  <link rel="stylesheet"
+  href="{{ url_for('static',     filename='node_modules/chart.js/dist/Chart.css') }}">
   <body>
+    {% block content %}
+    <canvas id="chartjs-4" class="chartjs" width="770" height="385" style="display: block; width: 770px; height: 385px;"></canvas>
+    <script type="text/javascript" src="{{ url_for('static',     filename='node_modules/chart.js/dist/Chart.min.js') }}"></script>
+    <script>
+      new Chart(document.getElementById("chartjs-4"),{"type":"doughnut","data":{"labels":["Red","Blue","Yellow"],"datasets":[{"label":"My First Dataset","data":[300,50,100],"backgroundColor":["rgb(255, 99, 132)","rgb(54, 162, 235)","rgb(255, 205, 86)"]}]}});
     
+    </script>
+      {% endblock %}
   </body>
 
+  
 </html>
